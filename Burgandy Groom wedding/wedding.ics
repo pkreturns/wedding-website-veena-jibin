@@ -1,13 +1,13 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Praveena and Jibin//Engagement//EN
+PRODID:-//Jibin Jose and Praveena Isaac//Wedding//EN
 BEGIN:VEVENT
-UID:praveena-jibin-engagement-20270124@invitation.local
+UID:praveena-jibin-wedding-20270131@invitation.local
 DTSTAMP:20261003T000000Z
-DTSTART:20270124T053000Z
-SUMMARY:Praveena & Jibin — Engagement
-LOCATION:Angamaly Basilica Church\, Angamaly\, Kerala
-DESCRIPTION:Join our families at 11:00 AM IST.\nCeremony at Angamaly
-  Basilica Church. Lunch at Carnation Convention Centre\, Angamaly.
+DTSTART:20270131T063000Z
+SUMMARY:Jibin Jose & Praveena Isaac — Wedding
+LOCATION:Meloor Church\, Meloor\, Thrissur
+DESCRIPTION:Join our families at 12:00 PM IST.\nCeremony at Meloor Church.
+  Lunch at Carnation Convention Centre\, Angamaly.
 END:VEVENT
 END:VCALENDAR

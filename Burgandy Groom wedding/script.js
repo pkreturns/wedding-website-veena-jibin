@@ -79,6 +79,7 @@ if (!motionPreference.matches) {
 function openInvitation() {
   if (opened) return;
   opened = true;
+  playMusic();
   document.body.classList.add("opening");
   setTimeout(
     () => {
@@ -96,27 +97,31 @@ function openInvitation() {
 opener.addEventListener("click", openInvitation);
 const music = document.querySelector("#music"),
   record = document.querySelector("#record");
-record.addEventListener("click", async () => {
-  if (music.paused) {
-    try {
-      await music.play();
-      record.classList.add("playing");
-      record.setAttribute("aria-label", "Pause background music");
-      record.setAttribute("aria-pressed", "true");
-    } catch {
-      record.setAttribute("aria-label", "Music unavailable. Try again.");
-    }
-  } else {
-    music.pause();
-    record.classList.remove("playing");
+// Start within the envelope click so browsers can allow audio playback.
+async function playMusic() {
+  try {
+    await music.play();
+  } catch {
     record.setAttribute("aria-label", "Play background music");
-    record.setAttribute("aria-pressed", "false");
   }
+}
+function syncMusicButton() {
+  const playing = !music.paused;
+  record.classList.toggle("playing", playing);
+  record.setAttribute("aria-label", playing ? "Pause background music" : "Play background music");
+  record.setAttribute("aria-pressed", String(playing));
+  record.querySelector("span").textContent = playing ? "CLICK TO PAUSE" : "CLICK TO LISTEN";
+}
+music.addEventListener("play", syncMusicButton);
+music.addEventListener("pause", syncMusicButton);
+record.addEventListener("click", () => {
+  if (music.paused) playMusic();
+  else music.pause();
 });
 function countdown() {
   let remaining = Math.max(
     0,
-    Math.floor((Date.parse("2027-01-24T11:00:00+05:30") - Date.now()) / 1000),
+    Math.floor((Date.parse("2027-01-31T12:00:00+05:30") - Date.now()) / 1000),
   );
   for (const [id, unit] of [
     ["days", 86400],
@@ -161,7 +166,7 @@ if (photos.length) {
   function render() {
     const photo = photos[index];
     image.src = photo.src;
-    image.alt = photo.alt || `Praveena and Jibin — photograph ${index + 1}`;
+    image.alt = photo.alt || `Jibin Jose and Praveena Isaac — photograph ${index + 1}`;
     fullImage.src = photo.src;
     fullImage.alt = image.alt;
     document.querySelector("#gallery-count").textContent =
