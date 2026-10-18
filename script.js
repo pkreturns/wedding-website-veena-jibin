@@ -4,6 +4,80 @@ const cover = document.querySelector(".cover"),
   menu = document.querySelector("#menu-toggle"),
   nav = document.querySelector("#navigation");
 let opened = false;
+
+// Reveal each block the first time it enters the viewport. Closing and reopening
+// the envelope does not reset blocks that have already appeared.
+const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
+const revealBlocks = content.querySelectorAll(
+  ".stationery, .welcome > *, .olive-band, .celebration > .eyebrow, " +
+    ".celebration > h2, .engagement-details > p, .engagement-details > a, " +
+    ".celebration-venue, .questions > *, " +
+    ".gallery > *, .location > *, footer",
+);
+
+if (!motionPreference.matches) {
+  const revealObserver = typeof IntersectionObserver === "function"
+    ? new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("is-revealed");
+        revealObserver?.unobserve(entry.target);
+      }
+    },
+    { threshold: 0, rootMargin: "0px 0px -35px 0px" },
+  ) : null;
+
+  revealBlocks.forEach((block) => {
+    block.classList.add("scroll-reveal");
+    if (block.matches(".celebration-venue")) {
+      block.classList.add("reveal-focus");
+      const index = [...block.parentElement.children].indexOf(block);
+      block.style.setProperty("--reveal-delay", `${index * 160}ms`);
+    }
+    if (block.matches(".gallery-empty, #gallery-ready")) {
+      block.classList.add("reveal-unfold");
+    }
+    if (block.matches("h2, .countdown")) {
+      block.classList.add("reveal-focus");
+    }
+    revealObserver?.observe(block);
+  });
+
+  // Older browsers use the same once-only behavior on scroll.
+  if (!revealObserver) {
+    const revealVisibleBlocks = () => {
+      if (content.hidden) return;
+      revealBlocks.forEach((block) => {
+        const bounds = block.getBoundingClientRect();
+        if (bounds.height && bounds.top < innerHeight - 35 && bounds.bottom > 0) {
+          block.classList.add("is-revealed");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealVisibleBlocks, { passive: true });
+    window.addEventListener("resize", revealVisibleBlocks);
+    new MutationObserver(revealVisibleBlocks).observe(content, {
+      attributes: true,
+      attributeFilter: ["hidden"],
+    });
+  }
+
+  // Keyboard navigation must never land on an invisible control.
+  content.addEventListener("focusin", (event) => {
+    const block = event.target.closest(".scroll-reveal");
+    if (!block) return;
+    block.classList.add("is-revealed");
+    revealObserver?.unobserve(block);
+  });
+
+  motionPreference.addEventListener("change", (event) => {
+    if (!event.matches) return;
+    revealObserver?.disconnect();
+    revealBlocks.forEach((block) => block.classList.add("is-revealed"));
+  });
+}
+
 function openInvitation() {
   if (opened) return;
   opened = true;
@@ -12,6 +86,8 @@ function openInvitation() {
     () => {
       cover.hidden = true;
       content.hidden = false;
+      // Establish the below-screen starting position before viewport reveals run.
+      content.getBoundingClientRect();
       document.body.classList.remove("sealed", "opening");
       window.scrollTo(0, 0);
       document.querySelector("#invitation").setAttribute("tabindex", "-1");

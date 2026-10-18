@@ -2,7 +2,7 @@
   --olive: #626749;
   --deep: #424832;
   --paper: #fbfaf5;
-  --ink: #535846;
+  --ink: #10330a;
   --gold: #b79a60;
   --line: #d9d9c9;
 }
@@ -691,16 +691,94 @@ footer button {
 }
 #invitation-content {
   overflow: hidden;
-  animation: appear 0.9s ease;
 }
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(90px);
+  transition:
+    opacity 400ms ease,
+    transform 1400ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1000ms ease,
+    clip-path 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.stationery.scroll-reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+/* Assemble the stationery in layers, preserving each piece's existing rotation. */
+.stationery.scroll-reveal > * {
+  opacity: 0;
+  translate: 0 240px;
+  transition:
+    opacity 450ms ease,
+    translate 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--piece-delay, 0ms);
+}
+.stationery.scroll-reveal .olive-backing {
+  translate: 0 300px;
+}
+.stationery.scroll-reveal .invitation-card {
+  --piece-delay: 180ms;
+  translate: 0 clamp(300px, 65vh, 650px);
+}
+.stationery.scroll-reveal .stationery-florals {
+  --piece-delay: 380ms;
+  translate: 0 300px;
+}
+.stationery.scroll-reveal .little-card {
+  --piece-delay: 550ms;
+  translate: 0 240px;
+}
+.stationery.scroll-reveal .record {
+  --piece-delay: 700ms;
+  translate: 0 240px;
+}
+.stationery.scroll-reveal.is-revealed > * {
+  opacity: 1;
+  translate: 0 0;
+}
+.scroll-reveal.reveal-focus {
+  transform: translateY(90px);
+  filter: none;
+}
+.scroll-reveal.reveal-unfold {
+  clip-path: none;
+  transform: translateY(110px);
+}
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  clip-path: none;
+}
+.reveal-unfold.is-revealed {
+  clip-path: inset(-5%);
+}
+@media (prefers-reduced-motion: reduce), print {
+  .stationery.scroll-reveal > * {
+    opacity: 1 !important;
+    translate: none !important;
+    transition: none !important;
   }
-  to {
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .stationery.scroll-reveal {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    filter: none;
+    clip-path: none;
+    transition: none;
+  }
+}
+@media print {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
   }
 }
 @media (min-width: 1100px) {
