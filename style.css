@@ -14,6 +14,8 @@ html {
   scroll-padding-top: 90px;
 }
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   background: var(--paper);
   color: var(--ink);
@@ -21,6 +23,21 @@ body {
   font-size: 19px;
   line-height: 1.6;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.035' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Watercolor botanical wallpaper; the invitation layout stays independent. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: #f8f4e8 url("assets/watercolor-botanical-background.png") center / cover no-repeat;
+}
+@media (max-width: 600px) {
+  body::before {
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+  }
 }
 button,
 a,
@@ -100,7 +117,7 @@ footer > span {
 #menu-toggle span {
   display: block;
   height: 1px;
-  margin: 7px 0;
+  margin: 4px 0;
   background: var(--ink);
 }
 nav {
@@ -328,7 +345,7 @@ p {
   border: 1px solid #8e9376;
   outline: 1px solid #c5c6b3;
   outline-offset: -6px;
-  padding: 42px 22px;
+  padding: 55px 22px 42px;
 }
 .invitation-card h2 {
   font-family: "Great Vibes", cursive;
@@ -742,7 +759,7 @@ footer button {
     inset: 40px 13px 65px;
   }
   .double-border {
-    padding: 35px 12px;
+    padding: 110px 12px 35px;
   }
   .invitation-card h2 {
     font-size: 49px;
@@ -837,9 +854,99 @@ footer button {
   }
 }
 /* Engagement, photographs, and venue */
+.invitation-card .double-border {
+  padding-bottom: 24px;
+}
 .engagement-details {
-  max-width: 600px;
+  max-width: 820px;
   margin: 30px auto 0;
+}
+.invitation-card .family-details p {
+  margin: 7px 0;
+  font-size: 18px;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+.family-parents {
+  font-weight: 600;
+}
+.invitation-card .family-address {
+  font-size: 17px;
+}
+.invitation-card .invitation-intro {
+  margin: 16px 0 12px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.couple-names > span {
+  display: block;
+}
+.invitation-card .couple-names {
+  margin: 14px 0;
+}
+.invitation-card .invitation-blessing {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.invitation-card .couple-names i {
+  font-size: 29px;
+  margin: 6px 0;
+}
+.invitation-card .family-relation {
+  font-size: 16px;
+  font-style: italic;
+}
+.groom-family {
+  margin: 12px 0 16px;
+}
+.celebration-venues {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 38px 0 26px;
+}
+.celebration-venue {
+  padding: 12px 24px;
+}
+.celebration-venue + .celebration-venue {
+  border-left: 1px solid var(--line);
+}
+.venue-icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  color: var(--olive);
+}
+.venue-distance {
+  font-size: 17px;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .invitation .stationery {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .invitation-card .family-details p {
+    font-size: 17px;
+  }
+  .invitation-card .family-details .family-address {
+    font-size: clamp(12px, 3.5vw, 16px);
+    white-space: nowrap;
+  }
+  .invitation-card .invitation-intro {
+    font-size: 16px;
+  }
+  .celebration-venues {
+    grid-template-columns: 1fr;
+  }
+  .celebration-venue {
+    padding: 24px 12px;
+  }
+  .celebration-venue + .celebration-venue {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
 }
 .gallery {
   max-width: 780px;

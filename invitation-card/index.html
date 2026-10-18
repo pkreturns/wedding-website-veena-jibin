@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#535c40" />
+    <title>Praveena & Jibin · Invitation Card</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="florals.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#">P <i>&</i> J</a>
+      <span>A LITTLE INVITATION TO FOREVER</span>
+    </header>
+    <main>
+      <aside>
+        <p class="eyebrow">MADE WITH LOVE</p>
+        <h1>Your invitation,<br /><i>beautifully personal.</i></h1>
+        <p>
+          Add your family details below, then save the card as a photo to share
+          with everyone you love.
+        </p>
+        <form id="card-form">
+          <fieldset>
+            <legend>The bride</legend>
+            <label for="bride">Name</label>
+            <input
+              id="bride"
+              name="bride"
+              value="Praveena"
+              maxlength="45"
+              required
+            />
+            <label for="brideParents">Daughter of</label>
+            <input
+              id="brideParents"
+              name="brideParents"
+              placeholder="Father’s name & Mother’s name"
+              maxlength="100"
+            />
+            <label for="brideAddress">House name & address</label>
+            <textarea
+              id="brideAddress"
+              name="brideAddress"
+              rows="2"
+              maxlength="160"
+              placeholder="House name&#10;Place, district"
+            ></textarea>
+          </fieldset>
+          <fieldset>
+            <legend>The groom</legend>
+            <label for="groom">Name</label>
+            <input
+              id="groom"
+              name="groom"
+              value="Jibin"
+              maxlength="45"
+              required
+            />
+            <label for="groomParents">Son of</label>
+            <input
+              id="groomParents"
+              name="groomParents"
+              placeholder="Father’s name & Mother’s name"
+              maxlength="100"
+            />
+            <label for="groomAddress">House name & address</label>
+            <textarea
+              id="groomAddress"
+              name="groomAddress"
+              rows="2"
+              maxlength="160"
+              placeholder="House name&#10;Place, district"
+            ></textarea>
+          </fieldset>
+          <details>
+            <summary>Celebration details</summary>
+            <label for="occasion">Invitation for</label>
+            <select id="occasion" name="occasion">
+              <option value="engagement">Engagement</option>
+              <option value="wedding">Wedding</option>
+            </select>
+            <label for="date">Date</label>
+            <input
+              id="date"
+              name="date"
+              type="date"
+              value="2027-01-24"
+              required
+            />
+            <label for="time">Time (IST)</label>
+            <input id="time" name="time" type="time" value="11:00" required />
+            <label for="venue">Venue</label>
+            <input
+              id="venue"
+              name="venue"
+              value="Carnation Convention Centre"
+              maxlength="100"
+              required
+            />
+            <label for="location">Location</label>
+            <input
+              id="location"
+              name="location"
+              value="Angamaly, Kerala"
+              maxlength="100"
+              required
+            />
+          </details>
+          <button id="download" type="submit" disabled>Preparing card…</button>
+          <p class="note">
+            PNG photo · 1500 × 2100 pixels<br />Only the invitation is
+            downloaded. Your edits stay in this tab.
+          </p>
+          <p id="status" role="status"></p>
+        </form>
+      </aside>
+      <section class="preview" aria-label="Invitation card preview">
+        <div class="preview-caption">
+          <span>YOUR KEEPSAKE</span><span>01 / 01</span>
+        </div>
+        <canvas
+          id="card"
+          width="1500"
+          height="2100"
+          role="img"
+          aria-label="Praveena and Jibin engagement invitation"
+        ></canvas>
+        <p>Made to be shared. Kept to be remembered.</p>
+      </section>
+    </main>
+  </body>
+</html>
