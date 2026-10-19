@@ -121,7 +121,7 @@ record.addEventListener("click", () => {
 function countdown() {
   let remaining = Math.max(
     0,
-    Math.floor((Date.parse("2027-01-31T12:00:00+05:30") - Date.now()) / 1000),
+    Math.floor((Date.parse("2027-01-30T11:30:00+05:30") - Date.now()) / 1000),
   );
   for (const [id, unit] of [
     ["days", 86400],
