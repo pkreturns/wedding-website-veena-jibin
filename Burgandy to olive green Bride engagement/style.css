@@ -1,0 +1,1076 @@
+:root {
+  --wine: #626749;
+  --cream: #eee5cf;
+  --gold: #bda775;
+  --script: "Great Vibes", "Brush Script MT", cursive;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Jost", Arial, sans-serif;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.07' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.19'/%3E%3C/svg%3E");
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+  background: #ded5c3;
+  color: #434835;
+  font: 17px/1.55 var(--sans);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: #f6eee4 url("assets/burgundy-botanical-background.png") center / cover no-repeat;
+}
+a {
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  font: inherit;
+}
+button,
+a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+[hidden] {
+  display: none !important;
+}
+:focus-visible {
+  outline: 3px solid #a18144;
+  outline-offset: 5px;
+}
+.script {
+  font-family: var(--script);
+  font-weight: 400;
+}
+.cover {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 0;
+  background: #eee7dc;
+}
+.cover-note {
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin: 0 20px 24px;
+  text-align: center;
+}
+.sealed-envelope {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: min(82vw, 620px);
+  margin: 28px 0 12px;
+  transition:
+    transform 0.8s,
+    opacity 0.8s;
+}
+.sealed-envelope img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 18px #62674926);
+}
+.sealed-envelope:hover {
+  transform: scale(1.015);
+}
+.cover > .script {
+  margin: 22px 0 8px;
+  font-size: 35px;
+}
+.cover-names {
+  font: 18px var(--serif);
+  letter-spacing: 1px;
+}
+.opening .sealed-envelope {
+  transform: scale(1.12);
+  opacity: 0;
+}
+#pages {
+  max-width: 760px;
+  margin: auto;
+  box-shadow: 0 0 70px #3038241c;
+  background: var(--grain), #f4eedc;
+}
+.page {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.lace-invitation {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: url("assets/lace-invitation.png") center / 100% 100% no-repeat;
+}
+.invitation-copy {
+  position: absolute;
+  inset: 16% 30% 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.invitation-copy p {
+  margin: 9px 0;
+  font: 500 clamp(12px, 2.2vw, 18px)/1.4 var(--serif);
+}
+h1 {
+  font: 400 clamp(39px, 7vw, 65px)/1.15 var(--script);
+  margin: 17px 0;
+}
+h1 span,
+h1 i {
+  display: block;
+}
+h1 i {
+  font: 30px var(--serif);
+  margin: 10px;
+}
+.scrapbook {
+  height: 870px;
+  position: relative;
+  margin-top: -7px;
+}
+.scrapbook-flower {
+  position: absolute;
+  left: -7%;
+  top: -9%;
+  width: 56%;
+  z-index: 3;
+  filter: sepia(0.6) saturate(0.25);
+  transform: rotate(-22deg);
+  pointer-events: none;
+}
+.record {
+  position: absolute;
+  right: 4%;
+  top: -6%;
+  width: 40%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: repeating-radial-gradient(#171716 0 2px, #292726 3px 4px);
+  border: 7px solid #151514;
+  color: #f3ead6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 16px 8px;
+  z-index: 4;
+  transform: rotate(16deg);
+  box-shadow: 0 5px 9px #0003;
+}
+.record > span {
+  font: 21px var(--sans);
+  letter-spacing: 1px;
+}
+.record > i {
+  display: grid;
+  place-items: center;
+  width: 32%;
+  aspect-ratio: 1;
+  background: #030303;
+  border-radius: 50%;
+  font-style: normal;
+  font-size: 27px;
+}
+.record > small {
+  font: 10px var(--sans);
+  letter-spacing: 2px;
+}
+.record.playing {
+  animation: spin 12s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(376deg);
+  }
+}
+.calendar {
+  position: absolute;
+  left: 5%;
+  top: 12%;
+  width: 54%;
+  min-height: 410px;
+  padding: 66px 22px 28px;
+  color: #ead9bb;
+  background: var(--grain), var(--wine);
+  border-radius: 48% 48% 10px 10px / 25% 25% 10px 10px;
+}
+.calendar > .script {
+  font-size: 48px;
+  line-height: 1;
+}
+.year {
+  display: block;
+  letter-spacing: 4px;
+  font-size: 13px;
+  margin: 15px 0;
+}
+.calendar table {
+  width: 100%;
+  table-layout: fixed;
+  font: 24px var(--serif);
+  border-spacing: 0 8px;
+}
+.calendar th {
+  font: 12px var(--sans);
+}
+.calendar td {
+  height: 30px;
+}
+.selected-day {
+  border: 1px solid #ebd9bd;
+  border-radius: 50%;
+}
+.calendar p {
+  margin: 18px 0;
+  font: 21px var(--serif);
+}
+.calendar > .initials {
+  font-size: 34px;
+}
+.portrait-link {
+  position: absolute;
+  right: 6%;
+  top: 31%;
+  width: 30%;
+  height: 280px;
+  display: grid;
+  place-items: center;
+  border: 13px ridge #b39a65;
+  outline: 4px double #8b723f;
+  outline-offset: 3px;
+  border-radius: 50%;
+  background: #363d2c;
+  color: #d9c497;
+  text-decoration: none;
+  box-shadow: 0 8px 15px #0003;
+}
+.portrait-link > .script {
+  font-size: 41px;
+  line-height: 1;
+}
+.portrait-link i {
+  font-size: 25px;
+}
+.portrait-link img {
+  position: absolute;
+  width: 160%;
+  bottom: -40%;
+  right: -30%;
+  transform: rotate(83deg);
+  filter: saturate(0.15) sepia(0.15);
+  pointer-events: none;
+}
+.details-token {
+  position: absolute;
+  left: 8%;
+  top: 69%;
+  width: 35%;
+  aspect-ratio: 1;
+  border: 13px double #808565;
+  outline: 4px dotted #808565;
+  border-radius: 50%;
+  background: var(--wine);
+  color: #d9bd90;
+  transform: rotate(-16deg);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.details-token .script {
+  font-size: 45px;
+}
+.details-token > span:last-child {
+  font: 20px var(--serif);
+}
+.polaroids {
+  position: absolute;
+  left: 3%;
+  top: 95%;
+  width: 47%;
+  height: 220px;
+}
+.polaroid {
+  position: absolute;
+  width: 58%;
+  aspect-ratio: 4/5;
+  padding: 10px 10px 27px;
+  background: #fffaf0;
+  box-shadow: 0 4px 10px #0003;
+  transform: rotate(-17deg);
+}
+.polaroid i {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  background: #b1a493;
+  color: white;
+  font: 35px var(--script);
+}
+.polaroid small {
+  font: 11px var(--serif);
+}
+.polaroid.two {
+  left: 46%;
+  top: 35px;
+  transform: rotate(17deg);
+}
+.story-heart {
+  position: absolute;
+  right: 7%;
+  top: 91%;
+  width: 34%;
+  aspect-ratio: 1;
+  background: #e8dcc5;
+  color: #626749;
+  border: 8px dotted #fbf7e9;
+  outline: 2px solid #ad9470;
+  border-radius: 50% 50% 45% 45%;
+  transform: rotate(13deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 10px 15px 0 #767c5d;
+}
+.story-heart > span:first-child {
+  font-size: 12px;
+}
+.story-heart .script {
+  font-size: 37px;
+  line-height: 1.1;
+}
+.with-love {
+  padding: 220px 20px 45px;
+  font-size: 21px;
+}
+.with-love .script {
+  font-size: 39px;
+}
+.countdown {
+  display: flex;
+  justify-content: space-evenly;
+  background: var(--grain), var(--wine);
+  color: #ead7b8;
+  padding: 32px 20px;
+  border-block: 1px solid #a38457;
+}
+.countdown div {
+  display: flex;
+  flex-direction: column;
+}
+.countdown strong {
+  font: 36px var(--serif);
+  font-variant-numeric: tabular-nums;
+}
+.countdown span {
+  font-size: 10px;
+  margin-top: 10px;
+}
+.calendar-download {
+  display: block;
+  font-size: 11px;
+  padding: 17px;
+  letter-spacing: 2px;
+  text-underline-offset: 4px;
+}
+.story-page h2 {
+  font: 30px/1.1 var(--sans);
+  margin: 55px 0 40px;
+}
+.story-page h2 .script {
+  font-size: 47px;
+}
+.story-paper {
+  position: relative;
+  max-width: 530px;
+  width: 79%;
+  margin: 0 auto 65px;
+  padding: 35px 37px 45px;
+  color: #e6d5bd;
+  background: var(--wine);
+  border: 5px dotted var(--cream);
+  outline: 6px solid var(--wine);
+  border-radius: 18px;
+  transform: rotate(4deg);
+}
+.story-paper > .script {
+  font-size: 53px;
+  display: block;
+  text-align: left;
+}
+.story-paper p {
+  font-size: 16px;
+  margin: 22px 0;
+}
+.story-paper .signing {
+  font-size: 32px;
+  text-align: center;
+}
+.back-strip {
+  display: block;
+  background: var(--wine);
+  color: #e4d5bd;
+  text-decoration: none;
+  padding: 10px;
+  font: 11px var(--serif);
+}
+.candle-banner {
+  margin-top: 25px;
+  min-height: 350px;
+  background: url("assets/details-reference.jpg") center/cover;
+  display: grid;
+  place-items: center;
+}
+.candle-banner h2 {
+  margin: 0;
+  background: #50573b;
+  width: 96%;
+  padding: 40px 15px;
+  color: #e6d2a7;
+  font: 32px var(--sans);
+}
+.candle-banner .script {
+  display: block;
+  font-size: 76px;
+}
+.venue-frame {
+  width: 87%;
+  max-width: 590px;
+  aspect-ratio: 2/3;
+  background: url("assets/gold-frame.png") center/100% 100% no-repeat;
+  display: grid;
+  place-items: center;
+  margin: 35px auto 20px;
+}
+.venue-frame > div {
+  width: 61%;
+  color: #ead9b8;
+}
+.venue-frame h2 {
+  font-size: 40px;
+  line-height: 1.1;
+}
+.venue-frame h3 {
+  font-size: 43px;
+  margin: 38px 0 12px;
+}
+.venue-frame p {
+  font-size: 19px;
+}
+.gold-button {
+  display: inline-block;
+  padding: 8px 22px;
+  border-radius: 30px;
+  background: #b5a376;
+  color: #fffdf5;
+  font-size: 14px;
+  text-decoration: none;
+}
+.gold-button:hover {
+  background: #8c7749;
+}
+.location {
+  padding: 10px 40px 35px;
+}
+.location p {
+  font-size: 16px;
+  margin: 25px 0;
+}
+.location iframe {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border: 0;
+  margin: 25px 0;
+}
+.location .map-note {
+  font-size: 13px;
+}
+.thin-strip {
+  height: 20px;
+  background: var(--wine);
+}
+.ceremony-panel {
+  width: 80%;
+  margin: 45px auto;
+  padding: 45px 25px;
+  background: var(--grain), var(--wine);
+  color: #ebd5b4;
+}
+.ceremony-panel h2 {
+  font-size: 52px;
+  margin: 0 0 35px;
+}
+.rings {
+  font: 80px Georgia;
+  line-height: 1;
+}
+.heart-rule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 32px;
+}
+.heart-rule::before,
+.heart-rule::after {
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: #cfb98e;
+}
+.ceremony-time {
+  font-size: 26px;
+}
+.ceremony-panel > p:last-child {
+  margin-top: 40px;
+}
+.gift-note {
+  padding: 15px 35px 50px;
+}
+.gift-note h2,
+.faq h2,
+.gallery-page h2 {
+  font-size: 54px;
+  margin: 18px 0;
+}
+.faq {
+  padding: 30px 50px 50px;
+}
+.faq details {
+  padding: 22px 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+}
+.faq summary::after {
+  content: " +";
+}
+.faq details[open] summary::after {
+  content: " −";
+}
+.faq p {
+  font-size: 16px;
+}
+.gallery-page h2 {
+  margin-top: 40px;
+}
+.gallery-empty {
+  margin: 30px auto 50px;
+  width: 75%;
+  padding: 80px 30px;
+  color: #dfc79e;
+  background: var(--wine);
+  border: 9px double var(--gold);
+}
+.gallery-empty .script {
+  font-size: 43px;
+}
+#gallery-ready {
+  padding: 25px;
+}
+.gallery-open {
+  width: 100%;
+  padding: 10px;
+  background: var(--wine);
+  border: 8px double var(--gold);
+  cursor: zoom-in;
+}
+.gallery-open img {
+  display: block;
+  width: 100%;
+  height: 450px;
+  object-fit: contain;
+}
+.gallery-controls,
+.viewer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  align-items: center;
+  margin-top: 20px;
+}
+.gallery-controls button,
+.viewer-controls button {
+  background: none;
+  color: inherit;
+  border: 1px solid var(--gold);
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 25px;
+}
+#gallery-pause {
+  font-size: 14px;
+  padding: 7px;
+}
+footer {
+  text-align: center;
+  padding: 35px;
+  color: #e5cc9f;
+  background: var(--wine);
+  font: 20px var(--serif);
+}
+footer p {
+  margin: 9px;
+}
+footer button {
+  color: inherit;
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 12px;
+}
+#photo-viewer {
+  width: 100vw;
+  height: 100svh;
+  max-width: 100vw;
+  max-height: 100svh;
+  border: 0;
+  background: #242c1ef5;
+  color: white;
+  padding: 55px 20px 20px;
+}
+#photo-viewer::backdrop {
+  background: #242c1e;
+}
+#photo-viewer figure {
+  margin: 0;
+  height: calc(100% - 70px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+#viewer-image {
+  max-width: 100%;
+  height: calc(100% - 35px);
+  object-fit: contain;
+}
+#viewer-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 32px;
+}
+.viewing-photo {
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .cover {
+    min-height: 100svh;
+  }
+  .sealed-envelope {
+    width: 90%;
+    overflow: visible;
+  }
+  .sealed-envelope img {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+  .invitation-copy {
+    inset: 16% 29% 18%;
+  }
+  .invitation-copy p {
+    font-size: 10px;
+    margin: 5px 0;
+  }
+  h1 {
+    font-size: 36px;
+    margin: 7px 0;
+  }
+  h1 i {
+    font-size: 18px;
+    margin: 2px;
+  }
+  .scrapbook {
+    height: 600px;
+  }
+  .scrapbook-flower {
+    top: -5%;
+  }
+  .record {
+    width: 42%;
+    top: -3%;
+    border-width: 4px;
+    padding: 10px 5px;
+  }
+  .record > span {
+    font-size: 12px;
+  }
+  .record > small {
+    font-size: 7px;
+  }
+  .calendar {
+    top: 13%;
+    padding: 43px 11px 20px;
+    min-height: 0;
+  }
+  .calendar > .script {
+    font-size: 34px;
+  }
+  .year {
+    font-size: 11px;
+    margin: 12px 0 6px;
+  }
+  .calendar table {
+    font-size: 18px;
+    border-spacing: 0 3px;
+  }
+  .calendar td {
+    height: 22px;
+  }
+  .calendar th {
+    font-size: 9px;
+  }
+  .calendar p {
+    margin: 14px 0;
+    font-size: 17px;
+  }
+  .calendar > .initials {
+    font-size: 27px;
+  }
+  .portrait-link {
+    top: 36%;
+    height: 180px;
+    border-width: 9px;
+  }
+  .portrait-link > .script {
+    font-size: 28px;
+  }
+  .portrait-link i {
+    font-size: 18px;
+  }
+  .details-token {
+    top: 74%;
+    border-width: 8px;
+  }
+  .details-token .script {
+    font-size: 29px;
+  }
+  .details-token > span:last-child {
+    font-size: 15px;
+  }
+  .polaroids {
+    top: 103%;
+  }
+  .polaroid i {
+    font-size: 22px;
+  }
+  .polaroid small {
+    font-size: 9px;
+  }
+  .story-heart {
+    top: 98%;
+    border-width: 5px;
+  }
+  .story-heart .script {
+    font-size: 25px;
+  }
+  .with-love {
+    padding-top: 180px;
+  }
+  .story-paper {
+    padding: 25px 22px 30px;
+  }
+  .story-paper p {
+    font-size: 14px;
+  }
+  .candle-banner {
+    min-height: 220px;
+  }
+  .candle-banner h2 {
+    font-size: 25px;
+    padding: 22px 12px;
+  }
+  .candle-banner .script {
+    font-size: 60px;
+  }
+  .venue-frame h2 {
+    font-size: 29px;
+  }
+  .venue-frame h3 {
+    font-size: 32px;
+    margin-top: 22px;
+  }
+  .venue-frame p {
+    font-size: 15px;
+  }
+  .location {
+    padding: 10px 24px 25px;
+  }
+  .location iframe {
+    height: 300px;
+  }
+  .ceremony-panel h2 {
+    font-size: 42px;
+  }
+  .ceremony-panel p {
+    font-size: 16px;
+  }
+  .faq {
+    padding: 25px 35px;
+  }
+  .gallery-empty .script {
+    font-size: 33px;
+  }
+  .gallery-empty {
+    width: 85%;
+    padding: 60px 15px;
+  }
+  .gallery-open img {
+    height: 340px;
+  }
+}
+@media (max-width: 360px) {
+  h1 {
+    font-size: 30px;
+  }
+  .invitation-copy p {
+    font-size: 9px;
+  }
+  .scrapbook {
+    height: 560px;
+  }
+  .venue-frame p {
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Praveena's invitation: family details and coordinated botanical stationery. */
+.cover {
+  background: transparent;
+}
+#pages {
+  background: #f8f2e8ed;
+}
+.lace-invitation {
+  aspect-ratio: auto;
+  min-height: 830px;
+  background-size: 180% 100%;
+}
+.invitation-copy {
+  position: relative;
+  inset: auto;
+  width: 70%;
+  margin: auto;
+  padding: 135px 0 155px;
+}
+.invitation-copy p {
+  font: 500 18px/1.35 var(--serif);
+  margin: 6px 0;
+}
+.invitation-copy .family-parents {
+  font-weight: 600;
+}
+.invitation-copy .family-address {
+  font-size: 16px;
+}
+.invitation-copy .invitation-intro {
+  margin: 17px 0 8px;
+}
+.invitation-copy h1 {
+  font-size: 62px;
+  margin: 12px 0;
+}
+.invitation-copy h1 i {
+  font: 28px var(--script);
+  margin: 5px 0;
+}
+.date-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 8px;
+  font-family: var(--serif);
+}
+.date-art strong {
+  font-size: 78px;
+  font-weight: 400;
+  line-height: 1;
+}
+.date-art div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.date-art em {
+  font: 34px var(--script);
+}
+.date-art span {
+  font-size: 30px;
+}
+.invitation-copy .invitation-blessing {
+  font-size: 16px;
+  margin-top: 13px;
+}
+.celebration-details {
+  margin: 40px 24px;
+  padding: 35px 22px;
+  background: var(--wine);
+  color: var(--cream);
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: -9px;
+}
+.eyebrow {
+  font: 10px var(--sans);
+  letter-spacing: 3px;
+}
+.celebration-details h2,
+.location h2 {
+  font-size: 48px;
+  margin: 18px 0;
+}
+.celebration-venues {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 30px 0;
+}
+.celebration-venue {
+  padding: 10px 15px;
+}
+.celebration-venue + .celebration-venue {
+  border-left: 1px solid #bda77566;
+}
+.venue-icon {
+  width: 56px;
+  height: 56px;
+  color: var(--gold);
+}
+.celebration-venue h3 {
+  font: 34px var(--script);
+  margin: 14px 0;
+}
+.celebration-venue p {
+  font: 21px/1.35 var(--serif);
+}
+.venue-distance {
+  font: italic 17px/1.4 var(--serif);
+}
+/* Translates preserve the rotations of the scrapbook pieces. */
+.scroll-reveal {
+  opacity: 0;
+  translate: 0 90px;
+  transition: opacity 450ms ease, translate 1500ms cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.lace-invitation.scroll-reveal {
+  translate: 0 clamp(300px, 65vh, 650px);
+  transition-duration: 500ms, 1800ms;
+}
+.scrapbook > .scroll-reveal {
+  translate: 0 220px;
+}
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  translate: 0 0;
+}
+@media (max-width: 600px) {
+  body::before {
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+  }
+  #pages {
+    margin: 0 10px;
+  }
+  .lace-invitation {
+    min-height: 720px;
+    background-size: 210% 100%;
+  }
+  .invitation-copy {
+    width: 80%;
+    padding: 115px 0 165px;
+  }
+  .invitation-copy p {
+    font-size: 15px;
+  }
+  .invitation-copy .family-address {
+    font-size: clamp(11px, 3.25vw, 15px);
+    white-space: nowrap;
+  }
+  .invitation-copy h1 {
+    font-size: 47px;
+  }
+  .invitation-copy .invitation-blessing {
+    font-size: 14px;
+  }
+  .celebration-details {
+    margin: 30px 14px;
+    padding: 30px 17px;
+  }
+  .celebration-venues {
+    grid-template-columns: 1fr;
+  }
+  .celebration-venue + .celebration-venue {
+    border-left: 0;
+    border-top: 1px solid #bda77566;
+    margin-top: 15px;
+    padding-top: 25px;
+  }
+}
+@media (prefers-reduced-motion: reduce), print {
+  .scroll-reveal,
+  .lace-invitation.scroll-reveal,
+  .scrapbook > .scroll-reveal {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+}
+
+/* Full names fit the invitation without changing the stationery layout. */
+.invitation-copy h1 {
+  font-size: clamp(38px, 6.5vw, 56px);
+}
+@media (max-width: 600px) {
+  .invitation-copy h1 {
+    font-size: clamp(30px, 9vw, 43px);
+  }
+}
+
+/* Palette-only variant: recolor existing art without changing its geometry. */
+body::before,
+.lace-invitation,
+.candle-banner,
+.venue-frame {
+  filter: url("#olive-artwork");
+}
+.sealed-envelope img {
+  filter: url("#olive-artwork") drop-shadow(0 18px 18px #42483226);
+}
