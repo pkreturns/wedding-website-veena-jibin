@@ -4,10 +4,10 @@ PRODID:-//Jibin Jose and Praveena Isaac//Wedding//EN
 BEGIN:VEVENT
 UID:praveena-jibin-wedding-20270130@invitation.local
 DTSTAMP:20261003T000000Z
-DTSTART:20270130T060000Z
+DTSTART:20270130T050000Z
 SUMMARY:Jibin Jose & Praveena Isaac — Wedding
 LOCATION:Sacred Heart Church Thiruhridayakunnu\, Meloor\, Thrissur
-DESCRIPTION:Join our families at 11:30 AM IST.\nCeremony at Sacred Heart Church Thiruhridayakunnu.
+DESCRIPTION:Join our families at 10:30 AM IST.\nCeremony at Sacred Heart Church Thiruhridayakunnu.
   Lunch at Sacred Heart Parish Hall\, Meloor.
 END:VEVENT
 END:VCALENDAR

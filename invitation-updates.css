@@ -1,0 +1,92 @@
+/* Shared invitation wording and contact details, matched to each design's colours. */
+.invitation-copy {
+  padding-top: 175px;
+  padding-bottom: 205px;
+}
+
+@media (max-width: 600px) {
+  .invitation-copy {
+    padding-top: 165px;
+    padding-bottom: 215px;
+  }
+}
+
+.invitation-copy .invitation-verse,
+.invitation-card .invitation-verse {
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto 1.4rem;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  text-align: center;
+}
+
+.invitation-copy .invitation-verse p,
+.invitation-card .invitation-verse p {
+  margin: 0;
+  font: italic 400 1.125rem/1.45 "Cormorant Garamond", Georgia, serif;
+  text-wrap: pretty;
+}
+
+.invitation-verse cite {
+  display: block;
+  margin-top: .5rem;
+  font: 400 .875rem/1.5 "Cormorant Garamond", Georgia, serif;
+  letter-spacing: .08em;
+}
+
+.invitation-copy .invitation-intro,
+.invitation-card .invitation-intro {
+  max-width: 30rem;
+  margin: 1rem auto .75rem;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+footer .invitation-contact {
+  max-width: 34rem;
+  margin: 1.75rem auto 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: normal;
+  color: var(--cream, #eee9d8);
+}
+
+footer .invitation-contact p {
+  margin: .4rem 0;
+}
+
+footer .invitation-contact .contact-greeting {
+  font-size: 1.375rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+footer .invitation-contact .contact-name {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+footer .invitation-contact .contact-phones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: .25rem .4rem;
+  margin-top: .7rem;
+  font: 400 1rem/1.7 "Jost", Arial, sans-serif;
+}
+
+footer .invitation-contact a {
+  color: inherit;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+footer .invitation-contact a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
